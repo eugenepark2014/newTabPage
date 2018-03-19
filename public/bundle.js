@@ -134,19 +134,54 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Main = function (_React$Component) {
   _inherits(Main, _React$Component);
 
-  function Main() {
+  function Main(props) {
     _classCallCheck(this, Main);
 
-    return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
+    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
+
+    _this.state = { date: new Date() };
+    return _this;
   }
 
   _createClass(Main, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      this.timerID = setInterval(function () {
+        return _this2.tick();
+      }, 1000);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      clearInterval(this.timerID);
+    }
+  }, {
+    key: 'tick',
+    value: function tick() {
+      this.setState({
+        date: new Date()
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
-        'h2',
-        null,
-        'Hello'
+        'div',
+        { id: 'info' },
+        _react2.default.createElement(
+          'h1',
+          null,
+          'Hello, world!'
+        ),
+        _react2.default.createElement(
+          'h1',
+          null,
+          'It is ',
+          this.state.date.toLocaleTimeString(),
+          '.'
+        )
       );
     }
   }]);
@@ -170,7 +205,7 @@ exports = module.exports = __webpack_require__(/*! ../node_modules/css-loader/li
 
 
 // module
-exports.push([module.i, "* {\n  font-family: arial, sans-serif;\n  box-sizing: border-box;\n}\n\nbody {\n  height: 100vh;\n  width: 100vw;\n  margin: 0;\n}\n\n.row {\n  display: flex;\n  flex-direction: row;\n}\n.row.center-x {justify-content: center;}\n.row.center-y {align-items: center;}\n\n.column {\n  display: flex;\n  flex-direction: column;\n}\n.column.center-x {align-items: center;}\n.column.center-y {justify-content: center;}\n\n.fill-x {width: 100%;}\n.fill-y {height: 100%;}\n.fill-xy {\n  width: 100%;\n  height: 100%;\n}\n\n.fit-x {width: fit-content;}\n.fit-y {height: fit-content;}\n.fit-xy {\n  width: fit-content;\n  height: fit-content;\n}\n\n.wrap {flex-wrap: wrap;}\n\n.row.space-around {justify-content: space-around;}\n.row.space-between {justify-content: space-between;}\n.row.space-evenly {justify-content: space-evenly;}\n\n/* flex items */\n.grow1 {flex-grow: 1;}\n.grow2 {flex-grow: 2;}\n.grow3 {flex-grow: 3;}\n.grow4 {flex-grow: 4;}\n.grow5 {flex-grow: 5;}\n\n/* text-align */\n.text-center {text-align: center;}\n.text-right {text-align: right;}\n.text-left {text-align: left;}\n\n/* colors */\n.red {color: #CF000F;}\n.orange {color: #EB6B56;}\n.yellow {color: #FFC153;}\n.green {color: #27AE60;}\n.blue {color: #47B39D;}\n.violet {color: #462446;}\n.black {color: #000000;}\n.white {color: #ffffff;}\n\n.bg-red {background-color: #CF000F;}\n.bg-orange {background-color: #EB6B56;}\n.bg-yellow {background-color: #FFC153;}\n.bg-green {background-color: #27AE60;}\n.bg-blue {background-color: #47B39D;}\n.bg-violet {background-color: #462446;}\n.bg-black {background-color: #000000;}\n.bg-white {background-color: #ffffff;}\n\n/* buttons */\n.btn {\n  border: none;\n  transition: all 0.75s ease;\n  outline: none;\n}\n.rounded {border-radius: 3px;}\n\n/* inputs */\n.input {\n  border: 1px solid #CCCCCC;\n  transition: all 0.25s ease;\n  padding: 0.25em;\n}\n.input:focus {\n  outline: none;\n  box-shadow: 0 0 0.5pt 0.5pt #CCCCCC;\n}\n\n/* margin */\n.m1 {margin: 1em;}\n.m2 {margin: 3em;}\n.m3 {margin: 3em;}\n\n/* padding */\n.p1 {padding: 1em;}\n.p2 {padding: 3em;}\n.p3 {padding: 3em;}\n", ""]);
+exports.push([module.i, "* {\n  font-family: arial, sans-serif;\n  box-sizing: border-box;\n}\n\nbody {\n  height: 100vh;\n  width: 100vw;\n  margin: 0;\n  background-image: URL(\"/background.png\");\n  display: flex;\n  justify-content: center;\n  align-items: center;\n}\n#info{\n  padding: 50px;\n  opacity: 0.5;\n  border-radius: 2px;\n  background-color: white;\n}\n#info h1{\n  opacity: 1.0;\n  font-size: 10em;\n}\n.row {\n  display: flex;\n  flex-direction: row;\n}\n.row.center-x {justify-content: center;}\n.row.center-y {align-items: center;}\n\n.column {\n  display: flex;\n  flex-direction: column;\n}\n.column.center-x {align-items: center;}\n.column.center-y {justify-content: center;}\n\n.fill-x {width: 100%;}\n.fill-y {height: 100%;}\n.fill-xy {\n  width: 100%;\n  height: 100%;\n}\n\n.fit-x {width: fit-content;}\n.fit-y {height: fit-content;}\n.fit-xy {\n  width: fit-content;\n  height: fit-content;\n}\n\n.wrap {flex-wrap: wrap;}\n\n.row.space-around {justify-content: space-around;}\n.row.space-between {justify-content: space-between;}\n.row.space-evenly {justify-content: space-evenly;}\n\n/* flex items */\n.grow1 {flex-grow: 1;}\n.grow2 {flex-grow: 2;}\n.grow3 {flex-grow: 3;}\n.grow4 {flex-grow: 4;}\n.grow5 {flex-grow: 5;}\n\n/* text-align */\n.text-center {text-align: center;}\n.text-right {text-align: right;}\n.text-left {text-align: left;}\n\n/* colors */\n.red {color: #CF000F;}\n.orange {color: #EB6B56;}\n.yellow {color: #FFC153;}\n.green {color: #27AE60;}\n.blue {color: #47B39D;}\n.violet {color: #462446;}\n.black {color: #000000;}\n.white {color: #ffffff;}\n\n.bg-red {background-color: #CF000F;}\n.bg-orange {background-color: #EB6B56;}\n.bg-yellow {background-color: #FFC153;}\n.bg-green {background-color: #27AE60;}\n.bg-blue {background-color: #47B39D;}\n.bg-violet {background-color: #462446;}\n.bg-black {background-color: #000000;}\n.bg-white {background-color: #ffffff;}\n\n/* buttons */\n.btn {\n  border: none;\n  transition: all 0.75s ease;\n  outline: none;\n}\n.rounded {border-radius: 3px;}\n\n/* inputs */\n.input {\n  border: 1px solid #CCCCCC;\n  transition: all 0.25s ease;\n  padding: 0.25em;\n}\n.input:focus {\n  outline: none;\n  box-shadow: 0 0 0.5pt 0.5pt #CCCCCC;\n}\n\n/* margin */\n.m1 {margin: 1em;}\n.m2 {margin: 3em;}\n.m3 {margin: 3em;}\n\n/* padding */\n.p1 {padding: 1em;}\n.p2 {padding: 3em;}\n.p3 {padding: 3em;}\n", ""]);
 
 // exports
 
