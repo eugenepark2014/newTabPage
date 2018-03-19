@@ -14,8 +14,3 @@
     "newtab": "newtab.html"
   }
 }
-<script>
-      document.addEventListener("DOMContentLoaded", function() {
-        chrome.management.getAll(getAllCallback);
-      });
-    </script>
