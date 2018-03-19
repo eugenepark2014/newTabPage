@@ -1,0 +1,21 @@
+{
+  "manifest_version": 2,
+  "name": "My Extension",
+  "version": "0.0.1",
+
+  "description": "A plain text description",
+  "icon": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+
+  "chrome_url_overrides" : {
+    "newtab": "newtab.html"
+  }
+}
+<script>
+      document.addEventListener("DOMContentLoaded", function() {
+        chrome.management.getAll(getAllCallback);
+      });
+    </script>
