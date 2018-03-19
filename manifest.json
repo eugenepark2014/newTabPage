@@ -10,7 +10,8 @@
     "128": "icon128.png"
   },
 
+  "permissions" : ["management"],
   "chrome_url_overrides" : {
-    "newtab": "newtab.html"
+    "newtab": "./public/index.html"
   }
 }
